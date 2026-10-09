@@ -64,7 +64,70 @@
 
 ## Trạm 3 — Ngưỡng
 
-*(Sẽ điền ở Checkpoint 3)*
+| # | Đèn | 🟢 | 🟡 | 🔴 | Nguồn [BM]/[MH]/[TB] | Lý do (1 câu) · ngày kiểm tra nếu [BM] |
+|---|---|---|---|---|---|---|
+| 1 | **Time-to-first-value (TTFV)** ⭐ | < 30 ngày | 30–60 ngày | > 60 ngày | [TB] | B2B Enterprise AI cần thời gian kết nối API viễn thông, nhưng nếu quá 60 ngày khách hàng không thấy giá trị đo được thì rủi ro churn năm đầu > 80% (theo HANDBOOK §3.2, kiểm tra 27/08/2026). |
+| 2 | **Pipeline coverage** | ≥ 4× | 3× – 4× | < 3× | [MH] | Với tỷ lệ thắng thầu (win rate) B2B thực tế là 25%, pipeline cần tối thiểu 4× chỉ tiêu doanh thu mới (`1 ÷ 25% = 4×`); nếu < 3× chắc chắn không đủ deal bù rớt phễu để đạt chỉ tiêu quý. |
+| 3 | **% deal chết ở khâu security/procurement** | < 10% | 10% – 20% | > 20% | [TB] | Dữ liệu viễn thông vị trí xe là tài sản bảo mật cao; nếu >20% deal dừng ở InfoSec thì nút thắt nằm ở hồ sơ tuân thủ an toàn chứ không phải sản phẩm hay giá (theo HANDBOOK §3.2, kiểm tra 27/08/2026). |
+| 4 | **Usage depth trong tài khoản (Seat Active Rate)** | ≥ 60% | 30% – 60% | < 30% | [TB] | Khi <30% số ghế analyst được mua hoạt động hàng tuần sau 60 ngày go-live, đây là tín hiệu báo động sớm khách hàng sẽ cắt giảm seat hoặc không gia hạn (theo HANDBOOK §3.2, kiểm tra 27/08/2026). |
+| 5 | **Chi phí AI Inference & Compute ÷ Doanh thu** | < 5% | 5% – 10% | > 10% | [MH] | Để giữ Gross Margin mục tiêu ≥ 65%, tổng ngân sách hạ tầng trực tiếp tối đa 15% ARPU, trong đó trần tối đa cho AI token & OSRM routing là 10% ARPU (6.000.000 ₫/tháng); vượt mức này sẽ ăn mòn biên lợi nhuận gộp. |
+| 6 | **Chi phí triển khai Onboarding ÷ ACV** | < 15% | 15% – 20% | > 20% | [MH] | Chi phí kỹ thuật onboarding vượt 20% ACV (> 144.000.000 ₫ tương đương ~410 giờ công) biến công ty thành dịch vụ gia công tùy biến (custom agency) không thể scale. |
+| 7 | **Gross Margin (Biên lợi nhuận gộp)** | ≥ 65% | 55% – 65% | < 55% | [BM] | ICONIQ *State of AI 2026* (07/2026, kiểm tra 27/08/2026): Trung vị GM AI-native đạt 53% (2026E) so với 45% (2025); mục tiêu 65% đảm bảo vị thế vượt trội ngành và nếu rơi xuống < 55% là chi phí token/OSRM đã mất kiểm soát. |
+
+### Phụ lục [MH] — phép tính (≥2)
+
+**[MH] 1 — Chi phí triển khai Onboarding ÷ ACV**
+
+```text
+Đầu vào (từ mô hình tài chính Day 24 của tôi):
+- Giá trị hợp đồng năm (ACV): 720.000.000 ₫ / năm (ARPU: 60.000.000 ₫/tháng).
+- Đơn giá giờ công nội bộ kỹ sư giải pháp (Solutions Engineer): 350.000 ₫ / giờ.
+- Gross Margin mục tiêu: 65% → Tổng trần Giá vốn hàng bán (COGS) tối đa: 35% ACV = 252.000.000 ₫/năm.
+- Trong 35% trần COGS: 15% dành cho hạ tầng cloud & AI inference định kỳ (108.000.000 ₫), 5% dành cho hỗ trợ vận hành L1/L2 (36.000.000 ₫).
+- Ngân sách tối đa còn lại cho chi phí triển khai tích hợp onboarding khách hàng năm đầu là 15% ACV = 108.000.000 ₫ (~308 giờ công kỹ sư).
+
+Phép tính:
+- Mức lý tưởng (Xanh): Chi phí triển khai < 15% ACV (< 108.000.000 ₫ hay < 308 giờ công kỹ sư).
+- Mức báo động (Vàng): Chi phí triển khai từ 15% đến 20% ACV (108.000.000 ₫ – 144.000.000 ₫, tương đương 308 – 411 giờ công).
+- Mức nguy hiểm (Đỏ): Chi phí triển khai > 20% ACV (> 144.000.000 ₫ hay > 411 giờ công kỹ sư). Vượt mức này, biên lợi nhuận năm đầu rơi xuống dưới 50%, công ty bị kéo tụt thành công ty gia công dịch vụ.
+
+Kết quả → 🟢 < 15% · 🟡 15% – 20% · 🔴 > 20%
+```
+
+**[MH] 2 — Chi phí AI Inference & Compute ÷ Doanh thu**
+
+```text
+Đầu vào (từ mô hình Value Metric & Cost/Job Day 25 của tôi):
+- ARPU thuê bao doanh nghiệp: 60.000.000 ₫ / tháng.
+- Gói tiêu chuẩn giám sát tối đa 200.000 cuốc xe/tháng, tỷ lệ sinh ca nghi vấn DIC/gian lận viễn thông ~1% = 2.000 ca/tháng.
+- Chi phí biên AI/Job: 300 ₫ / ca thẩm định (LangGraph multi-agent dossier brief ~100 ₫ + OSRM & DAVI map-matching ~150 ₫ + Qdrant policy search ~50 ₫).
+- Chi phí AI cơ sở định mức = 2.000 ca × 300 ₫ = 600.000 ₫ / tháng (~1% ARPU).
+
+Phép tính:
+- Để đạt mục tiêu Gross Margin ≥ 65%, tổng chi phí trực tiếp (COGS) hàng tháng tối đa = 35% × 60.000.000 ₫ = 21.000.000 ₫.
+- Trong đó, hạ tầng server lưu trữ và mạng cơ bản chiếm 10% ARPU (6.000.000 ₫), chi phí vận hành hỗ trợ chiếm 15% ARPU (9.000.000 ₫).
+- Ngân sách trần tối đa cho phép đối với biến phí AI Model Inference + Cụm tính toán OSRM / Qdrant là 10% ARPU = 6.000.000 ₫ / tháng (tương ứng gấp 10 lần mức tiêu thụ cơ sở, phòng ngừa analyst tra cứu policy liên tục hoặc cuốc xe tăng đột biến).
+- Nếu chi phí AI vượt quá 10% ARPU (> 6.000.000 ₫/tháng/khách), chi phí inference đang bị rò rỉ do prompt loop, thiếu semantic cache hoặc bùng nổ dữ liệu bất thường.
+
+Kết quả → 🟢 < 5% · 🟡 5% – 10% · 🔴 > 10%
+```
+
+**[MH] 3 — Pipeline Coverage (Hệ số bao phủ phễu bán hàng)**
+
+```text
+Đầu vào (từ kế hoạch tăng trưởng Sales-led GTM B2B):
+- Chỉ tiêu doanh thu mới mỗi quý (New ARR Target): 1.440.000.000 ₫ (tương đương ký mới 2 khách hàng doanh nghiệp ACV 720.000.000 ₫/quý).
+- Tỷ lệ thắng thầu (Win Rate) thực tế từ cơ hội đủ điều kiện (Qualified Opportunity) sang ký hợp đồng (Closed Won): 25%.
+
+Phép tính:
+- Theo công thức nghịch đảo win rate: Coverage cần thiết = 1 ÷ Win Rate = 1 ÷ 25% = 4,0×.
+- Tổng giá trị pipeline qualified cần duy trì trong quý = 1.440.000.000 ₫ × 4,0 = 5.760.000.000 ₫ (tương đương 8 deal enterprise trong phễu).
+- Ngưỡng an toàn (Xanh): Coverage ≥ 4,0× (≥ 5.760.000.000 ₫).
+- Ngưỡng cảnh báo (Vàng): Coverage từ 3,0× đến 4,0× (4.320.000.000 ₫ – 5.760.000.000 ₫, tương đương 6 – 8 deal).
+- Ngưỡng nguy hiểm (Đỏ): Coverage < 3,0× (< 4.320.000.000 ₫, ít hơn 6 deal). Khi phễu dưới 3×, xác suất trượt chỉ tiêu quý vượt quá 70%.
+
+Kết quả → 🟢 ≥ 4× · 🟡 3× – 4× · 🔴 < 3×
+```
 
 ## Trạm 4 — 5 luật quyết định
 
