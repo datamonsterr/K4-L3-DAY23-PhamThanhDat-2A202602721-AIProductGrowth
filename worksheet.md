@@ -23,7 +23,28 @@
 
 ## Trạm 1 — Loại mô hình
 
-*(Sẽ điền ở Checkpoint 1)*
+### 1. Trả lời 3 câu hỏi theo thực tế hôm nay
+1. **Ai trả tiền cho bạn?** Doanh nghiệp vận tải & nền tảng gọi xe công nghệ (B2B Enterprise như Green Smart Mobility - GSM / Xanh SM, Be Group, hoặc các đơn vị vận hành đội xe thương mại).
+2. **Ai dùng sản phẩm?** Chính nhân sự của doanh nghiệp trả tiền — cụ thể là đội ngũ chuyên viên phòng chống gian lận (Fraud Operations Analysts), quản trị rủi ro và an toàn vận hành.
+3. **Nếu có bên trung gian, bạn có chạm được người dùng cuối không?** **Không.** Chúng tôi hoàn toàn không chạm vào người dùng cuối. Ứng dụng là một buồng lái nội bộ (internal adjudication cockpit); hành khách và tài xế không nhìn thấy thương hiệu, không tương tác với hệ thống, và mọi luồng ứng dụng di động tài xế/khiếu nại đều được hoãn (*deferred*) khỏi phạm vi Phase 1.
+
+**Câu chốt loại:** Chúng tôi là **B2B** vì tiền đến từ doanh nghiệp vận tải/gọi xe công nghệ (như Green Smart Mobility - GSM / Xanh SM), người dùng trực tiếp là đội ngũ chuyên viên phòng chống gian lận (Fraud Operations Analysts) của doanh nghiệp đó, và chúng tôi hoàn toàn không tương tác hay chạm trực tiếp vào hành khách/tài xế cuối (mọi giao diện tài xế/hành khách và khiếu nại đều nằm ngoài phạm vi Phase 1).
+
+### 2. Bảng đèn §3 của B2B (HANDBOOK §3.2)
+
+| Đèn | ✅ / 🔧 / ❌ | Số nằm ở đâu / cần gì để đo |
+|---|---|---|
+| **Time-to-first-value (TTFV)** ⭐ | 🔧 | Đo được trong 2 tuần — Cần kết nối timestamp ký hợp đồng trên CRM với event log ghi nhận lần đầu tiên chuyên viên của khách hàng nhấn xác nhận chế tài một ca gian lận thật trên buồng lái. |
+| **Pipeline coverage** | ✅ | Đo được hôm nay — Nằm trong CRM (HubSpot/Salesforce): Tổng ACV của các deal đạt chuẩn Qualified chia cho chỉ tiêu doanh thu mới của quý. |
+| **% deal chết ở khâu security/procurement** | ✅ | Đo được hôm nay — Báo cáo Win/Loss Analysis trong CRM: Lọc theo trường Lost Reason = "Security/InfoSec Rejection" hoặc "Procurement Stall". |
+| **POC → paid** | ✅ | Đo được hôm nay — Tỷ lệ hợp đồng pilot 30 ngày chuyển đổi thành hợp đồng thuê bao năm chính thức trong CRM. |
+| **Sales cycle (tuần)** | ✅ | Đo được hôm nay — Dữ liệu CRM: Số ngày trung bình từ stage Qualified Opportunity đến Closed Won. |
+| **Usage depth trong tài khoản** | ✅ | Đo được hôm nay — Telemetry logs của webapp: Số lượng chuyên viên thẩm định ≥5 ca/tuần chia cho tổng số ghế (seat licenses) đã mua. |
+| **Chi phí triển khai ÷ ACV** | 🔧 | Đo được trong 2 tuần — Cần bảng chấm công (timesheet) ghi nhận số giờ công kỹ sư giải pháp hỗ trợ tích hợp cổng API viễn thông và chi phí môi trường sandbox cho từng khách hàng. |
+| **Tập trung doanh thu** | ✅ | Đo được hôm nay — Sổ kế toán quản trị: Doanh thu của khách hàng lớn nhất chia cho tổng doanh thu định kỳ trong tháng. |
+| **NRR (Net Revenue Retention)** | ❌ | Chưa đo được và chưa biết cách — Sản phẩm mới ở Phase 1 MVP, chưa có khách hàng nào đi hết chu kỳ hợp đồng 12 tháng để có dữ liệu mở rộng (expansion) hay churn năm thứ hai. |
+| **Gross Margin** | ✅ | Đo được hôm nay — Báo cáo tài chính tháng: Tổng doanh thu trừ đi chi phí trực tiếp (hoá đơn model API, chi phí cụm OSRM, Qdrant và hosting AWS). |
+| **CAC payback** | 🔧 | Đo được trong 2 tuần — Cần chuẩn hoá hạch toán phân bổ chi phí lương đội ngũ sales doanh nghiệp, chi phí marketing và chi phí hạ tầng pilot theo từng quý. |
 
 ## Trạm 2 — Thẻ đèn
 
