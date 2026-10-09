@@ -3,6 +3,9 @@
 - **Họ tên:** Phạm Thành Đạt
 - **MSSV:** 2A202602721
 - **Ngày làm:** 2026-10-09
+- **Thời gian thực hiện (Timeline):**
+  - **Ca trưa (11:30 – 12:30):** Khởi tạo (11:32) → Trạm 1 (CP1: 11:51) → Trạm 2 (CP2: 12:24)
+  - **Ca tối (21:00 – 21:40):** Trạm 3 (CP3: 21:11) → Trạm 4 (CP4: 21:26) → Trạm 5 (CP5: 21:38)
 - **Sản phẩm:** FleetWatch AI — Nền tảng phát hiện gian lận viễn thông & Buồng lái thẩm định gian lận cho doanh nghiệp vận tải/gọi xe công nghệ (Green Smart Mobility - GSM / Xanh SM)
 
 ---

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Operating Dashboard & Phụ lục [MH] — FleetWatch AI</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 8mm 10mm;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #1a202c;
+    font-size: 8.0pt;
+    line-height: 1.22;
+    background: #fff;
+  }
+  .page {
+    height: 100%;
+  }
+  .page-break {
+    page-break-before: always;
+  }
+  h1 {
+    font-size: 13pt;
+    color: #0f172a;
+    border-bottom: 2px solid #2563eb;
+    padding-bottom: 2px;
+    margin-bottom: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  h2 {
+    font-size: 11pt;
+    color: #1e3a8a;
+    border-bottom: 1.5px solid #3b82f6;
+    padding-bottom: 2px;
+    margin-top: 1px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+  h3 {
+    font-size: 8.4pt;
+    color: #1e40af;
+    margin-top: 4px;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .meta-bar {
+    background: #f1f5f9;
+    padding: 4px 7px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    font-size: 7.9pt;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #e2e8f0;
+  }
+  .north-star {
+    background: #eff6ff;
+    border-left: 3.5px solid #2563eb;
+    padding: 4px 7px;
+    margin-bottom: 5px;
+    font-size: 8.2pt;
+  }
+  .north-star strong {
+    color: #1d4ed8;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 4px;
+    font-size: 7.5pt;
+  }
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 2.5px 4.5px;
+    vertical-align: middle;
+  }
+  th {
+    background: #f8fafc;
+    color: #334155;
+    font-weight: 700;
+    text-align: left;
+  }
+  .rules-list {
+    margin-left: 14px;
+    margin-bottom: 4px;
+    font-size: 7.5pt;
+  }
+  .rules-list li {
+    margin-bottom: 2px;
+    text-align: justify;
+  }
+  .stop-tag {
+    background: #fee2e2;
+    color: #b91c1c;
+    font-weight: 800;
+    padding: 1px 3px;
+    border-radius: 3px;
+    font-size: 7.0pt;
+  }
+  .action-call {
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .callout-box {
+    background: #fafafa;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    padding: 3px 6px;
+    margin-top: 3px;
+    font-size: 7.3pt;
+  }
+  .callout-kill {
+    background: #fff1f2;
+    border-left: 3.5px solid #e11d48;
+    padding: 3px 5px;
+    margin-bottom: 3px;
+    font-size: 7.3pt;
+  }
+  .callout-unmeasured {
+    background: #fffbeb;
+    border-left: 3.5px solid #d97706;
+    padding: 3px 5px;
+    font-size: 7.2pt;
+  }
+  .calc-box {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 3px;
+    padding: 4px 6px;
+    margin-bottom: 4px;
+    font-size: 7.4pt;
+  }
+  .calc-title {
+    font-weight: bold;
+    color: #1e3a8a;
+    margin-bottom: 2px;
+    font-size: 7.9pt;
+  }
+  pre {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 6.9pt;
+    line-height: 1.18;
+    background: #f1f5f9;
+    padding: 3px 5px;
+    border-radius: 3px;
+    border: 1px solid #e2e8f0;
+    white-space: pre-wrap;
+  }
+  .badge-g { color: #16a34a; font-weight: bold; }
+  .badge-y { color: #d97706; font-weight: bold; }
+  .badge-r { color: #dc2626; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: OPERATING DASHBOARD -->
+<div class="page">
+  <h1>OPERATING DASHBOARD — FLEETWATCH AI (P-063)</h1>
+  
+  <div class="meta-bar">
+    <span><strong>Loại mô hình:</strong> B2B SaaS Enterprise (Mobility Telemetry)</span>
+    <span><strong>Cập nhật:</strong> 2026-10-09 (21:38 GMT+7)</span>
+    <span><strong>Chủ quản:</strong> Phạm Thành Đạt — MSSV: 2A202602721</span>
+  </div>
+
+  <div class="north-star">
+    <strong>NORTH STAR METRIC:</strong> <strong>Time-to-first-value (TTFV)</strong> — Hiện tại: <em>Đang đo (pilot)</em> — Mục tiêu quý: <strong>&lt; 30 ngày</strong>
+  </div>
+
+  <h3>1. Đèn báo sớm (Leading — theo dõi hằng ngày/tuần)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Đèn</th>
+        <th style="width: 10%;">Hiện</th>
+        <th style="width: 32%;">Ngưỡng (🟢 / 🟡 / 🔴)</th>
+        <th style="width: 9%;">Nguồn</th>
+        <th style="width: 24%;">Báo trước cho</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Time-to-first-value (TTFV)</strong> ⭐</td>
+        <td>Đang đo</td>
+        <td><span class="badge-g">🟢 &lt;30d</span> · <span class="badge-y">🟡 30–60d</span> · <span class="badge-r">🔴 &gt;60d</span></td>
+        <td>[TB]</td>
+        <td>POC → paid · NRR (gia hạn năm đầu)</td>
+      </tr>
+      <tr>
+        <td><strong>Pipeline coverage</strong></td>
+        <td>4,2×</td>
+        <td><span class="badge-g">🟢 ≥4×</span> · <span class="badge-y">🟡 3×–4×</span> · <span class="badge-r">🔴 &lt;3×</span></td>
+        <td>[MH]</td>
+        <td>Doanh thu mới ký kết · Sales cycle</td>
+      </tr>
+      <tr>
+        <td><strong>% deal chết ở security/procurement</strong></td>
+        <td>12%</td>
+        <td><span class="badge-g">🟢 &lt;10%</span> · <span class="badge-y">🟡 10%–20%</span> · <span class="badge-r">🔴 &gt;20%</span></td>
+        <td>[TB]</td>
+        <td>Tỷ lệ thắng thầu (Win rate) · Sales cycle</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>2. Đèn vận hành (Operating — theo dõi hằng tuần/tháng)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Đèn</th>
+        <th style="width: 10%;">Hiện</th>
+        <th style="width: 32%;">Ngưỡng (🟢 / 🟡 / 🔴)</th>
+        <th style="width: 9%;">Nguồn</th>
+        <th style="width: 24%;">Báo trước cho</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Usage depth (Seat Active Rate)</strong></td>
+        <td>65%</td>
+        <td><span class="badge-g">🟢 ≥60%</span> · <span class="badge-y">🟡 30%–60%</span> · <span class="badge-r">🔴 &lt;30%</span></td>
+        <td>[TB]</td>
+        <td>NRR (tái ký) · POC → paid</td>
+      </tr>
+      <tr>
+        <td><strong>Chi phí AI & Compute ÷ Doanh thu</strong></td>
+        <td>3,8%</td>
+        <td><span class="badge-g">🟢 &lt;5%</span> · <span class="badge-y">🟡 5%–10%</span> · <span class="badge-r">🔴 &gt;10%</span></td>
+        <td>[MH]</td>
+        <td>Gross Margin (Biên lợi nhuận gộp)</td>
+      </tr>
+      <tr>
+        <td><strong>Chi phí triển khai Onboarding ÷ ACV</strong></td>
+        <td>14%</td>
+        <td><span class="badge-g">🟢 &lt;15%</span> · <span class="badge-y">🟡 15%–20%</span> · <span class="badge-r">🔴 &gt;20%</span></td>
+        <td>[MH]</td>
+        <td>Gross Margin · Tính scale SaaS</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>3. Đèn kết quả (Lagging — theo dõi hằng quý)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Đèn</th>
+        <th style="width: 10%;">Hiện</th>
+        <th style="width: 32%;">Ngưỡng (🟢 / 🟡 / 🔴)</th>
+        <th style="width: 33%;">Nguồn & Căn cứ chuẩn ngành</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Gross Margin (Biên lợi nhuận gộp)</strong></td>
+        <td>66,2%</td>
+        <td><span class="badge-g">🟢 ≥65%</span> · <span class="badge-y">🟡 55%–65%</span> · <span class="badge-r">🔴 &lt;55%</span></td>
+        <td>[BM] ICONIQ 07/2026 (kiểm tra 27/08/2026; trung vị AI SaaS: 53%)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>4. 5 Luật quyết định vận hành (⏹ = Luật dừng)</h3>
+  <ol class="rules-list">
+    <li><span class="stop-tag">⏹ DỪNG</span> <strong>NẾU</strong> TTFV &gt; 60 ngày <strong>TRÊN</strong> 3 khách pilot gần nhất <strong>THÌ</strong> đóng băng nhận pilot mới, cắt phạm vi xuống đúng 1 use case (DIC/ERR-02) trên 1 đội cho đến khi TTFV &lt; 30 ngày <strong>KHÔNG THÌ</strong> không tuyển thêm sales.</li>
+    <li><span class="stop-tag">⏹ DỪNG</span> <strong>NẾU</strong> % deal chết ở Security/Procurement &gt; 20% <strong>TRONG</strong> 1 quý <strong>VÀ</strong> deal quý ≥ 5 <strong>THÌ</strong> dừng chào hàng mới 2 tuần, tập trung 100% kỹ sư hoàn thiện Evidence Pack v1 <strong>KHÔNG THÌ</strong> không giảm giá để cứu deal.</li>
+    <li><span class="stop-tag">⏹ DỪNG</span> <strong>NẾU</strong> Chi phí triển khai Onboarding &gt; 20% ACV <strong>TRÊN</strong> 2 khách liên tiếp <strong>THÌ</strong> dừng ký hợp đồng yêu cầu custom connector, chuẩn hoá 100% qua REST API/Webhook <strong>KHÔNG THÌ</strong> không nhận khách mới với giá cũ.</li>
+    <li><strong>NẾU</strong> Chi phí AI Inference & Compute &gt; 10% Doanh thu <strong>TRONG</strong> 2 tuần liên tiếp <strong>THÌ</strong> kích hoạt cache ngữ cảnh RAG, chuyển mô hình dossier brief sang Flash/Haiku và áp rate limit 100 queries/analyst/ngày <strong>KHÔNG THÌ</strong> không tự ý tăng giá giữa kỳ.</li>
+    <li><strong>NẾU</strong> Usage depth &lt; 30% <strong>TRONG</strong> 3 tuần <strong>VÀ</strong> tài khoản go-live &gt; 30 ngày <strong>THÌ</strong> cử trực tiếp 1 Solution Engineer và 1 Product Specialist đến văn phòng khách hàng đào tạo lại 3 ngày <strong>KHÔNG THÌ</strong> không up-sell thêm seat hay module mới.</li>
+  </ol>
+
+  <h3>5. Cổng gác 90 ngày (Falsifiable Gates)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 8%;">Ngày</th>
+        <th style="width: 25%;">Metric (1 metric)</th>
+        <th style="width: 25%;">Ngưỡng qua cổng</th>
+        <th style="width: 22%;">Bằng chứng vật lý</th>
+        <th style="width: 20%;">Nếu trượt</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>30</strong></td>
+        <td>Pilot khởi động & Evidence Pack</td>
+        <td>≥2 pilot onboarded & Evidence Pack v1 100%</td>
+        <td>2 Biên bản Pilot ký + File <code>EVIDENCE_PACK_V1.pdf</code></td>
+        <td><strong>FIX:</strong> Ở lại 30 ngày, tập trung tích hợp cho 1 đối tác</td>
+      </tr>
+      <tr>
+        <td><strong>60</strong></td>
+        <td>TTFV trên khách hàng pilot</td>
+        <td>TTFV &lt; 30 ngày trên ≥2 khách pilot</td>
+        <td>Log hệ thống <code>audit_decision_logs.jsonl</code> ghi 5 ca thực</td>
+        <td><strong>PIVOT:</strong> Thu hẹp thành API micro-service phát hiện dừng xe</td>
+      </tr>
+      <tr>
+        <td><strong>90</strong></td>
+        <td>POC → Paid & Mở rộng</td>
+        <td>≥1 hợp đồng trả phí (ACV ≥ 720tr ₫) & 1 LOI</td>
+        <td>Hợp đồng thương mại ký số đóng dấu (<code>contract_signed.pdf</code>)</td>
+        <td><strong>KILL:</strong> Dừng dự án, hoàn trả dữ liệu, bảo toàn runway</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout-kill">
+    <strong>KILL CRITERIA:</strong> Nếu đến ngày <strong>07/01/2027</strong> (mốc 90 ngày), tỷ lệ POC → Paid bằng 0 (không ký được hợp đồng thương mại nào có ACV ≥ 720.000.000 ₫), chúng tôi sẽ <strong>dừng toàn bộ dự án FleetWatch AI</strong>, hoàn trả dữ liệu cho khách hàng và bảo toàn 9 tháng runway tiền mặt còn lại.
+  </div>
+
+  <div class="callout-unmeasured">
+    <strong>CHƯA ĐO ĐƯỢC (Honesty):</strong>
+    (1) <em>NRR:</em> Cần dữ liệu tái ký sau chu kỳ 12 tháng của khách hàng đầu tiên; dự kiến có số tháng 10/2027.
+    (2) <em>Chi phí triển khai Onboarding ÷ ACV quy mô lớn:</em> Cần timesheet tự động theo mã dự án và hạch toán cloud AWS tenant; dự kiến có số ngày 15/12/2026.
+    (3) <em>CAC Payback thực tế:</em> Cần báo cáo tài chính chuẩn hoá chi phí S&M quý; dự kiến có số ngày 31/01/2027.
+  </div>
+</div>
+
+<!-- PAGE 2: APPENDIX [MH] -->
+<div class="page page-break">
+  <h2>PHỤ LỤC: MÔ HÌNH TÀI CHÍNH & PHÉP TÍNH NGƯỠNG [MH]</h2>
+  
+  <div class="meta-bar">
+    <span><strong>Dự án:</strong> FleetWatch AI (P-063)</span>
+    <span><strong>Phân khúc:</strong> B2B Enterprise / Mid-market Mobility Platform</span>
+    <span><strong>Tác giả:</strong> Phạm Thành Đạt (2A202602721)</span>
+  </div>
+
+  <div class="calc-box">
+    <div class="calc-title">BẢNG THAM SỐ TÀI CHÍNH ĐẦU VÀO (DAY 24 & DAY 25)</div>
+    <table>
+      <tr>
+        <td style="width: 25%;"><strong>ARPU:</strong> 60.000.000 ₫ / tháng (~$2.400/tháng)</td>
+        <td style="width: 25%;"><strong>ACV:</strong> 720.000.000 ₫ / năm</td>
+        <td style="width: 25%;"><strong>Gross Margin mục tiêu:</strong> 65%</td>
+        <td style="width: 25%;"><strong>Runway:</strong> 14 tháng (9,5 tháng hiệu dụng)</td>
+      </tr>
+      <tr>
+        <td><strong>CAC mục tiêu:</strong> 180.000.000 ₫ / khách</td>
+        <td><strong>CAC Payback:</strong> 4,6 tháng (&lt; 12 tháng)</td>
+        <td><strong>Value Metric:</strong> Ca gian lận được thẩm định</td>
+        <td><strong>Cost/Job (AI):</strong> 300 ₫ / ca thẩm định</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="calc-box">
+    <div class="calc-title">[MH] 1 — CHI PHÍ TRIỂN KHAI ONBOARDING ÷ ACV</div>
+    <p style="margin-bottom: 3px;"><strong>Mục tiêu:</strong> Ngăn chặn nguy cơ mô hình B2B SaaS bị biến dạng thành xưởng gia công dịch vụ (custom agency) có biên lợi nhuận thấp.</p>
+    <pre>
+Đầu vào từ mô hình tài chính Day 24:
+  • Giá trị hợp đồng năm (ACV): 720.000.000 ₫ / năm (ARPU: 60.000.000 ₫/tháng).
+  • Đơn giá nội bộ kỹ sư giải pháp (Solutions Engineer): 350.000 ₫ / giờ.
+  • Gross Margin mục tiêu: 65% → Tổng trần Giá vốn hàng bán (COGS) tối đa: 35% ACV = 252.000.000 ₫/năm.
+  • Trong 35% trần COGS: 15% cho hạ tầng cloud & AI model (108.000.000 ₫), 5% cho hỗ trợ kỹ thuật L1/L2 (36.000.000 ₫).
+  • Ngân sách trần tối đa cho chi phí triển khai tích hợp dữ liệu khách hàng năm đầu: 15% ACV = 108.000.000 ₫ (~308 giờ công).
+
+Phép tính xác định ngưỡng:
+  • Mức Xanh (Lý tưởng): Chi phí triển khai < 15% ACV (< 108.000.000 ₫ hay < 308 giờ công kỹ sư).
+  • Mức Vàng (Cảnh báo): Chi phí triển khai từ 15% đến 20% ACV (108.000.000 ₫ – 144.000.000 ₫, tương đương 308 – 411 giờ công).
+  • Mức Đỏ (Nguy hiểm): Chi phí triển khai > 20% ACV (> 144.000.000 ₫ hay > 411 giờ công). Vượt mức này, biên lợi nhuận năm đầu
+    bị ăn mòn xuống dưới 50%, công ty chịu lỗ biên vì phải tùy biến connector dữ liệu riêng lẻ.
+
+Kết quả thiết lập ngưỡng:
+  🟢 < 15% ACV  ·  🟡 15% – 20% ACV  ·  🔴 > 20% ACV
+    </pre>
+  </div>
+
+  <div class="calc-box">
+    <div class="calc-title">[MH] 2 — CHI PHÍ AI INFERENCE & COMPUTE ÷ DOANH THU</div>
+    <p style="margin-bottom: 3px;"><strong>Mục tiêu:</strong> Bắt trọn chi phí biến đổi của AI Model và cụm tính toán không gian trước khi xuất hiện muộn ở Gross Margin.</p>
+    <pre>
+Đầu vào từ mô hình Value Metric & Cost/Job Day 25:
+  • ARPU thuê bao doanh nghiệp: 60.000.000 ₫ / tháng.
+  • Định mức giám sát: 200.000 cuốc xe/tháng, tỷ lệ sinh ca nghi vấn DIC/gian lận ~1% = 2.000 ca/tháng.
+  • Chi phí biên AI/Job: 300 ₫ / ca (LangGraph multi-agent brief ~100 ₫ + OSRM/DAVI map matching ~150 ₫ + Qdrant search ~50 ₫).
+  • Chi phí AI cơ sở định mức hàng tháng: 2.000 ca × 300 ₫ = 600.000 ₫ / tháng (~1% ARPU).
+
+Phép tính xác định ngưỡng:
+  • Để duy trì Gross Margin ≥ 65%, tổng biến phí và định phí trực tiếp (COGS) tối đa hàng tháng = 35% × 60.000.000 ₫ = 21.000.000 ₫.
+  • Phân bổ: Hạ tầng server database & lưu trữ cơ bản: 10% ARPU (6.000.000 ₫); Hỗ trợ kỹ thuật vận hành: 15% ARPU (9.000.000 ₫).
+  • Ngân sách trần tối đa cho phép đối với AI Model API + Cụm tính toán OSRM / Qdrant là 10% ARPU = 6.000.000 ₫ / tháng (gấp 10 lần
+    mức cơ sở nhằm hấp thụ các đợt bùng nổ lưu lượng hoặc truy vấn Policy RAG tần suất cao).
+  • Nếu chi phí AI vượt quá 10% Doanh thu (> 6.000.000 ₫/tháng/khách), hệ thống đang gặp lỗi lặp vòng prompt, thiếu bộ đệm semantic
+    cache hoặc gọi model suy luận kích thước lớn không cần thiết.
+
+Kết quả thiết lập ngưỡng:
+  🟢 < 5% Doanh thu  ·  🟡 5% – 10% Doanh thu  ·  🔴 > 10% Doanh thu
+    </pre>
+  </div>
+
+  <div class="calc-box">
+    <div class="calc-title">[MH] 3 — PIPELINE COVERAGE (HỆ SỐ BAO PHỦ PHỄU DOANH SỐ)</div>
+    <p style="margin-bottom: 3px;"><strong>Mục tiêu:</strong> Cảnh báo sớm nguy cơ hụt chỉ tiêu doanh thu mới trước khi chu kỳ bán hàng B2B kết thúc.</p>
+    <pre>
+Đầu vào từ kế hoạch tăng trưởng Sales-led GTM B2B:
+  • Chỉ tiêu doanh thu mới mỗi quý (New ARR Target): 1.440.000.000 ₫ (tương đương 2 hợp đồng enterprise ACV 720.000.000 ₫/quý).
+  • Tỷ lệ thắng thầu (Win Rate) thực tế từ Qualified Opportunity sang Closed Won: 25%.
+
+Phép tính xác định ngưỡng:
+  • Hệ số bao phủ phễu cần thiết = 1 ÷ Win Rate = 1 ÷ 25% = 4,0×.
+  • Tổng giá trị pipeline qualified cần duy trì trong quý = 1.440.000.000 ₫ × 4,0 = 5.760.000.000 ₫ (tương đương 8 deal enterprise).
+  • Mức Xanh: Coverage ≥ 4,0× (≥ 5.760.000.000 ₫).
+  • Mức Vàng: Coverage từ 3,0× đến 4,0× (4.320.000.000 ₫ – 5.760.000.000 ₫, tương đương 6 – 8 deal).
+  • Mức Đỏ: Coverage < 3,0× (< 4.320.000.000 ₫, ít hơn 6 deal). Với tỷ lệ thắng 25%, phễu dưới 3× chắc chắn trượt chỉ tiêu quý (>70%).
+
+Kết quả thiết lập ngưỡng:
+  🟢 ≥ 4×  ·  🟡 3× – 4×  ·  🔴 < 3×
+    </pre>
+  </div>
+</div>
+
+</body>
+</html>
